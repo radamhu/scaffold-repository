@@ -1,0 +1,64 @@
+title = "Gitleaks Configuration"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "discord-webhook"
+description = "Discord Webhook URL"
+regex = '''https://discord(app)?.com/api/webhooks/[0-9]+/[a-zA-Z0-9_-]+'''
+tags = ["webhook", "discord"]
+
+[[rules]]
+id = "slack-webhook"
+description = "Slack Webhook URL"
+regex = '''https://hooks.slack.com/services/[A-Z0-9]+/[A-Z0-9]+/[a-zA-Z0-9]+'''
+tags = ["webhook", "slack"]
+
+[[rules]]
+id = "generic-webhook"
+description = "Generic Webhook URLs"
+regex = '''webhook[_-]?url['"]\s*:\s*['"]https?://[^\s'"]+'''
+tags = ["webhook"]
+
+[[rules]]
+id = "env-files"
+description = "Environment files"
+regex = '''(?i)(\.env|\.environment|config\.json|settings\.ini)'''
+path = '''(?i)\.(env|environment|config|settings)'''
+
+[[rules]]
+id = "api-keys"
+description = "Generic API keys"
+regex = '''(?i)(api[_-]?key|secret[_-]?key|access[_-]?token).{0,20}[=:]\s*['""]?([a-zA-Z0-9_-]{16,})'''
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+
+[[rules]]
+id = "github-token"
+description = "GitHub Token"
+regex = '''ghp_[0-9a-zA-Z]{36}'''
+
+[allowlist]
+description = "Global allow list"
+paths = [
+  '''\.gitleaks\.toml''',
+  '''\.git/''',
+  '''node_modules/''',
+  '''vendor/''',
+  '''\.venv/''',
+  '''__pycache__/'''
+]
+
+regexes = [
+  '''example\.com''',
+  '''localhost''',
+  '''127\.0\.0\.1''',
+  '''YOUR_API_KEY_HERE''',
+  '''REPLACE_ME''',
+  '''WEBHOOK_URL_PLACEHOLDER''',
+  '''https://discord\.com/api/webhooks/EXAMPLE'''
+]

@@ -1,0 +1,153 @@
+title: Repository Scaffolding Tool - Mental Map
+
+direction: down
+
+# Entry Point
+entry: {
+  shape: oval
+  label: "scaffold-repository.sh\n(Main Entry Point)"
+  style.fill: "#4CAF50"
+  style.stroke: "#2E7D32"
+  style.font-color: white
+}
+
+# Core Components
+components: {
+  label: "Core Components"
+
+  script_engine: {
+    shape: rectangle
+    label: "Bash Script Engine\n• Error handling\n• Logging functions\n• Tool validation"
+    style.fill: "#2196F3"
+    style.stroke: "#0D47A1"
+    style.font-color: white
+  }
+
+  security_layer: {
+    shape: rectangle
+    label: "Security Layer\n• Gitleaks config\n• Pre-commit hooks\n• Secret detection"
+    style.fill: "#F44336"
+    style.stroke: "#B71C1C"
+    style.font-color: white
+  }
+
+  python_mgmt: {
+    shape: rectangle
+    label: "Python Management\n• Pyenv integration\n• Virtual environments\n• Direnv configuration"
+    style.fill: "#FF9800"
+    style.stroke: "#E65100"
+    style.font-color: white
+  }
+
+  documentation: {
+    shape: rectangle
+    label: "Documentation & Guidelines\n• Copilot instructions\n• HLD diagrams\n• Setup guides"
+    style.fill: "#9C27B0"
+    style.stroke: "#4A148C"
+    style.font-color: white
+  }
+}
+
+# Data Flow
+data_flow: {
+  label: "Data Flow & Dependencies"
+
+  input: {
+    shape: parallelogram
+    label: "Input\n• Project name (optional)\n• Current directory"
+    style.fill: "#FFC107"
+    style.stroke: "#F57C00"
+  }
+
+  validation: {
+    shape: diamond
+    label: "Tool Validation\n• Git available?\n• Pyenv installed?\n• Direnv present?"
+    style.fill: "#00BCD4"
+    style.stroke: "#006064"
+    style.font-color: white
+  }
+
+  processing: {
+    shape: rectangle
+    label: "Processing Pipeline\n1. Git operations\n2. Python setup\n3. Security config\n4. Pre-commit install"
+    style.fill: "#607D8B"
+    style.stroke: "#263238"
+    style.font-color: white
+  }
+
+  output: {
+    shape: parallelogram
+    label: "Output\n• Configured project\n• Security scanning\n• Python environment\n• CI/CD pipeline"
+    style.fill: "#8BC34A"
+    style.stroke: "#33691E"
+  }
+}
+
+# Extension Points (Safe Areas for Modification)
+extension_points: {
+  label: "Safe Extension Points"
+  style.fill: "#E8F5E8"
+  style.stroke: "#4CAF50"
+
+  config_vars: {
+    shape: rectangle
+    label: "Configuration Variables\n• Python version\n• Tool versions\n• Default settings"
+    style.fill: "#C8E6C9"
+    style.stroke: "#388E3C"
+  }
+
+  hook_points: {
+    shape: rectangle
+    label: "Hook Integration\n• Pre-commit rules\n• Gitleaks patterns\n• Custom validators"
+    style.fill: "#C8E6C9"
+    style.stroke: "#388E3C"
+  }
+
+  template_system: {
+    shape: rectangle
+    label: "Template System\n• File generation\n• Directory structure\n• Documentation templates"
+    style.fill: "#C8E6C9"
+    style.stroke: "#388E3C"
+  }
+}
+
+# Dependencies & Integrations
+integrations: {
+  label: "External Dependencies"
+
+  tools: {
+    shape: rectangle
+    label: "Required Tools\n• Git\n• Pyenv\n• Direnv\n• Pip"
+    style.fill: "#FFEB3B"
+    style.stroke: "#F57F17"
+  }
+
+  services: {
+    shape: rectangle
+    label: "External Services\n• GitHub Actions\n• Discord webhooks\n• Python packages"
+    style.fill: "#FFEB3B"
+    style.stroke: "#F57F17"
+  }
+
+  security_tools: {
+    shape: rectangle
+    label: "Security Tools\n• Gitleaks\n• TruffleHog\n• Detect-secrets"
+    style.fill: "#FFEB3B"
+    style.stroke: "#F57F17"
+  }
+}
+
+# Relationships
+entry -> components.script_engine: "orchestrates"
+components.script_engine -> data_flow.input: "processes"
+data_flow.input -> data_flow.validation: "validates"
+data_flow.validation -> data_flow.processing: "if valid"
+data_flow.processing -> data_flow.output: "generates"
+
+components.security_layer -> integrations.security_tools: "configures"
+components.python_mgmt -> integrations.tools: "requires"
+components.documentation -> extension_points.template_system: "guides"
+
+extension_points.config_vars -> components.script_engine: "configures"
+extension_points.hook_points -> components.security_layer: "extends"
+extension_points.template_system -> data_flow.processing: "provides templates"
