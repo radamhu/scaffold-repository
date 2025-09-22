@@ -1,10 +1,28 @@
 # Main Purpose
 This is a repository scaffolding automation tool designed to bootstrap new development projects with a comprehensive security-first setup. The main script scaffold-repository.sh creates a standardized project structure with built-in security scanning, Python environment management, and development best practices.
 
+## Quickstart
+1. Clone or fork this repo.
+2. Edit `docs/architecture.md` to describe your system.
+3. Record major technical choices as ADRs in `docs/decisions/`.
+4. Add or update diagrams in `docs/diagrams/`.
+
+Stay consistent. Keep docs living with the codebase.
+
 ## Project Structure
 The repository follows a clean, modular structure:
 
+Stay consistent. Keep docs living with the codebase.
+
 ```
+├── docs/
+│   ├── architecture.md
+│   ├── glossary.md
+│   ├── diagrams/
+│   │   ├── context-diagram.mmd
+│   │   └── deployment-diagram.mmd
+│   └── decisions/
+│       └── 0001-record-architecture-decisions.md
 ├── scaffold-repository.sh          # Main automation script
 ├── .pre-commit-config.yaml         # Pre-commit hooks configuration
 ├── .gitleaks.toml                  # Secret detection rules
@@ -32,3 +50,7 @@ It's like having an experienced developer set up your project structure for you,
 
 ## Setup
 Run `./scaffold-repository.sh` to set up the development environment.
+
+## Source
+- https://github.com/shekhargulati/software-architecture-document-template
+- https://github.com/bflorat/architecture-document-template
